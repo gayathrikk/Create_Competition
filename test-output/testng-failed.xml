@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.test.Code4humanity.Sanity_Code4humanity">
+      <class name="com.test.Code4humanity.Code4humanity_apis">
         <methods>
-          <include name="Login"/>
-          <include name="close"/>
-          <include name="setup"/>
+          <include name="code"/>
         </methods>
-      </class> <!-- com.test.Code4humanity.Sanity_Code4humanity -->
+      </class> <!-- com.test.Code4humanity.Code4humanity_apis -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
