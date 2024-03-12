@@ -1,6 +1,7 @@
 package com.test.Code4humanity;
 
 import java.io.File;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -163,7 +165,7 @@ public class Competition {
 				 WebDriverWait wait = new WebDriverWait(driver, 10);
 					try {
 		    		    WebElement competionName = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='name']")));
-		    		    competionName.sendKeys("Automation Competition1");
+		    		    competionName.sendKeys("Automation_Competition1");
 		    		    System.out.println("competionName Entered successfully.");
 		    		    Thread.sleep(2000);
 		    		} catch (Exception e) {
@@ -216,10 +218,165 @@ public class Competition {
 			public void uploadfile() throws InterruptedException
 			{
 				
+				((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
 				 File filePath = new File("src/test/resources/automation.png");
 				 WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']")); 
 			     fileInput.sendKeys(filePath.getAbsolutePath());
 			     Thread.sleep(3000);
+			}
+			
+			@Test(priority=8)
+			public void save() throws InterruptedException
+			{
+				WebDriverWait wait = new WebDriverWait(driver, 10);
+				try {
+	    		    WebElement celldetection = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@type='submit']")));
+	    		    celldetection.click();
+	    		    System.out.println("Save Clicked successfully.");
+	    		    Thread.sleep(2000);
+	    		} catch (Exception e) {
+	    		    System.out.println("Save  not Clicked: " + e.getMessage());
+	    		}
+				Thread.sleep(2000);
+				
+
+				driver.switchTo().defaultContent();
+
+
+
+				WebElement exitELement = wait.until(
+
+				ExpectedConditions.presenceOfElementLocated(By.xpath("//div//button//nb-icon[@icon='close-outline']")));
+
+				if (exitELement.isEnabled() && exitELement.isDisplayed()) {
+
+				exitELement.click();
+
+				System.out.println("Exit button was clicked successfully");
+
+				} else {
+
+				System.out.println("Exit button is not clickable");
+
+				}
+
+				Thread.sleep(3000);
+
+			}
+			
+
+			@Test(priority =9)
+
+			public void deleteDataset() throws InterruptedException {
+				
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+
+			System.out
+
+			.println("************************* Now will delete the created Competition	 *************************\n\n");
+
+
+
+			driver.get("http://code4humanity.humanbrain.in/annotation/lims");
+
+			Thread.sleep(5000);
+
+			WebElement iframeElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("iframe")));
+
+
+
+			// now we will Switch to the iframe for further actions
+
+			driver.switchTo().frame(iframeElement);
+
+
+
+			WebElement datasetElement = wait
+
+			.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='Competitions']")));
+
+			if (datasetElement.isEnabled() && datasetElement.isDisplayed()) {
+
+			datasetElement.click();
+
+			System.out.println("Competitions option is clicked");
+
+			} else {
+
+			System.out.println("Competitions option is not clickable");
+
+			}
+
+			Thread.sleep(2000);
+
+
+
+			WebElement selectElement = wait.until(ExpectedConditions
+
+			.presenceOfElementLocated(By.xpath("//a[contains(text(), 'Automation_Competition1')]")));
+
+			if (selectElement.isEnabled() && selectElement.isDisplayed()) {
+
+			selectElement.click();
+
+			System.out.println("Competition name is selected successfully");
+
+			} else {
+
+			System.out.println("Competition name is not selected");
+
+			}
+
+			Thread.sleep(2000);
+
+
+
+			WebElement deleteElement = wait
+
+			.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(text(), 'Delete')]")));
+
+			if (deleteElement.isEnabled() && deleteElement.isDisplayed()) {
+
+			deleteElement.click();
+
+			System.out.println("Delete icon is clicked");
+
+			} else {
+
+			System.out.println("Delete icon is not clickable");
+
+			}
+
+			Thread.sleep(2000);
+
+
+
+			WebElement confirmElement = wait
+
+			.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@value='Yes, I’m sure']")));
+
+			if (confirmElement.isEnabled() && confirmElement.isDisplayed()) {
+
+			confirmElement.click();
+
+			System.out.println("Competition deleted successfully");
+
+			} else {
+
+			System.out.println("Competition is not deleted");
+
+			}
+
+			Thread.sleep(2000);
+
+
+
+			System.out.println("************************* Competition is deleted successfully *************************\n\n");
+
+			driver.switchTo().defaultContent();
+
+
+
 			}
 			
 			        

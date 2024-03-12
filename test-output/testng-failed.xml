@@ -5,6 +5,7 @@
     <classes>
       <class name="com.test.Code4humanity.Competition">
         <methods>
+          <include name="deleteDataset"/>
           <include name="close"/>
           <include name="setup"/>
           <include name="uploadfile"/>
