@@ -277,7 +277,7 @@ public class Competition {
 
 
 
-			driver.get("http://code4humanity.humanbrain.in/annotation/lims");
+			driver.get("https://code4humanity.humanbrain.in/viewer/annotation/lims");
 
 			Thread.sleep(5000);
 
