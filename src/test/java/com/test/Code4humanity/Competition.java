@@ -39,7 +39,7 @@ public class Competition {
 			public void Launch()throws InterruptedException
 			{
 				//driver.get(URL);
-				driver.get("http://code4humanity.humanbrain.in/annotation/analytics/home");
+				driver.get("https://code4humanity.humanbrain.in/viewer/annotation/analytics/home");
 				driver.manage().window().maximize();
 				String HomeURL="http://code4humanity.humanbrain.in/annotation/analytics/home";
 				String currentURL = driver.getCurrentUrl();
