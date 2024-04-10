@@ -41,7 +41,7 @@ public class Competition {
 				//driver.get(URL);
 				driver.get("https://code4humanity.humanbrain.in/viewer/annotation/analytics/home");
 				driver.manage().window().maximize();
-				String HomeURL="http://code4humanity.humanbrain.in/annotation/analytics/home";
+				String HomeURL="https://code4humanity.humanbrain.in/viewer/annotation/analytics/home";
 				String currentURL = driver.getCurrentUrl();
 		        System.out.println("Home URL: " + currentURL);
 		        Assert.assertEquals(currentURL, HomeURL, "URLs do not match!");
